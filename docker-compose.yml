@@ -1,1 +1,14 @@
 # // TODO: Implementar el docker-compose
+services:
+  app:
+    build: .
+    image: libreria-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - h2_data:/data
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/libreria_db
+
+volumes:
+  h2_data:
